@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-01T13:53:37.9422925+07:00",
+  "title": "Design System: NextDST 69",
+  "extensions": {
+    "colorMeta": {
+      "page": {
+        "role": "neutral",
+        "displayName": "Desk Page",
+        "canonical": "#f7f7f5",
+        "tonalRamp": ["oklch(15% 0.006 110)", "oklch(28% 0.006 110)", "oklch(40% 0.006 110)", "oklch(52% 0.006 110)", "oklch(64% 0.006 110)", "oklch(76% 0.006 110)", "oklch(88% 0.006 110)", "oklch(96% 0.006 110)"]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "White Panel",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#11120f", "#181a16", "#20231e", "#45493f", "#aaa79a", "#e2e2dd", "#f7f7f5", "#ffffff"]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Ink Text",
+        "canonical": "#151513",
+        "tonalRamp": ["#11120f", "#151513", "#2b2e27", "#45493f", "#6f6f68", "#aaa79a", "#e2e2dd", "#f4f2ea"]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Quiet Text",
+        "canonical": "#6f6f68",
+        "tonalRamp": ["#20231e", "#2b2e27", "#45493f", "#6f6f68", "#aaa79a", "#c8c8bf", "#e2e2dd", "#eeeeeb"]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Registrar Green",
+        "canonical": "#256c5f",
+        "tonalRamp": ["oklch(15% 0.055 180)", "oklch(26% 0.065 180)", "oklch(38% 0.075 180)", "oklch(49% 0.08 180)", "oklch(60% 0.075 180)", "oklch(72% 0.055 180)", "oklch(84% 0.035 180)", "oklch(95% 0.018 180)"]
+      },
+      "accent-soft": {
+        "role": "primary",
+        "displayName": "Pale Registrar Green",
+        "canonical": "#e1f0eb",
+        "tonalRamp": ["oklch(15% 0.04 180)", "oklch(28% 0.04 180)", "oklch(40% 0.04 180)", "oklch(52% 0.04 180)", "oklch(64% 0.035 180)", "oklch(76% 0.03 180)", "oklch(88% 0.025 180)", "oklch(95% 0.018 180)"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page identity and year hero headings only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles and main content headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Cards, accordions, and compact panels."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Thai explanations and longer course context."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, badges, filters, nav labels, and metadata."
+      }
+    },
+    "shadows": [
+      {
+        "name": "resting-surface",
+        "value": "shadow-sm",
+        "purpose": "Low card separation at rest."
+      },
+      {
+        "name": "interactive-lift",
+        "value": "shadow-md",
+        "purpose": "Hover feedback on year cards only."
+      },
+      {
+        "name": "overlay-drawer",
+        "value": "shadow-xl",
+        "purpose": "Mobile sidebar over the page overlay."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-quick",
+        "value": "180ms",
+        "purpose": "Accordion, card, filter, and course list state transitions."
+      },
+      {
+        "name": "drawer-spring",
+        "value": "spring stiffness 360 damping 34",
+        "purpose": "Mobile sidebar entry and exit."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "required",
+        "purpose": "Replace movement-heavy transitions with immediate state changes."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Use for the main page action, such as choosing a year or viewing courses.",
+      "html": "<button class=\"ds-btn-primary\">เลือกชั้นปี</button>",
+      "css": ".ds-btn-primary { background: var(--text); color: var(--page); border: 0; border-radius: 6px; padding: 12px 20px; font-family: var(--font-bai-jamjuree), system-ui, sans-serif; font-size: 14px; font-weight: 600; line-height: 1.4; cursor: pointer; transition: background-color 180ms ease, color 180ms ease, transform 180ms ease; } .ds-btn-primary:hover { transform: translateY(-1px); } .ds-btn-primary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Use for source document links and secondary anchors.",
+      "html": "<button class=\"ds-btn-secondary\">เปิดเอกสารต้นฉบับ</button>",
+      "css": ".ds-btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--line-strong); border-radius: 6px; padding: 12px 20px; font-family: var(--font-bai-jamjuree), system-ui, sans-serif; font-size: 14px; font-weight: 600; line-height: 1.4; cursor: pointer; transition: border-color 180ms ease, background-color 180ms ease; } .ds-btn-secondary:hover { border-color: var(--text); background: var(--panel-soft); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }"
+    },
+    {
+      "name": "Search Input",
+      "kind": "input",
+      "refersTo": "input-default",
+      "description": "Course search field for codes, Thai names, and English titles.",
+      "html": "<label class=\"ds-field\"><span>ค้นหาวิชา</span><input placeholder=\"รหัสวิชา, ชื่อไทย, English\" /></label>",
+      "css": ".ds-field { display: block; color: var(--muted); font-family: var(--font-bai-jamjuree), system-ui, sans-serif; font-size: 14px; font-weight: 500; } .ds-field input { margin-top: 8px; width: 100%; height: 44px; border: 1px solid var(--line); border-radius: 6px; background: var(--field); color: var(--text); padding: 0 12px; font: inherit; outline: none; transition: border-color 180ms ease, box-shadow 180ms ease; } .ds-field input::placeholder { color: var(--muted); } .ds-field input:focus-visible { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }"
+    },
+    {
+      "name": "Course Card",
+      "kind": "card",
+      "refersTo": "card-default",
+      "description": "Canonical course summary card with code, titles, credit count, metadata, and optional note.",
+      "html": "<article class=\"ds-course-card\"><div class=\"ds-course-head\"><div><span class=\"ds-code\">ITDS 120</span><h3>การเขียนโปรแกรมขั้นพื้นฐาน</h3><p>Fundamentals of Programming</p></div><div class=\"ds-credit\"><strong>3</strong><span>credits</span></div></div><div class=\"ds-chip-row\"><span>วิชาแกน/บังคับ</span><span>ปี 1</span><span>ภาค 1</span></div></article>",
+      "css": ".ds-course-card { border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--text); padding: 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); font-family: var(--font-bai-jamjuree), system-ui, sans-serif; } .ds-course-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; } .ds-code { display: inline-block; border-radius: 6px; background: var(--text); color: var(--page); padding: 4px 10px; font-size: 12px; font-weight: 600; } .ds-course-card h3 { margin: 12px 0 0; font-size: 18px; line-height: 1.55; font-weight: 600; } .ds-course-card p { margin: 4px 0 0; color: var(--muted); font-size: 14px; line-height: 1.7; } .ds-credit { flex-shrink: 0; min-width: 56px; border: 1px solid var(--line); border-radius: 6px; padding: 8px 12px; text-align: center; } .ds-credit strong { display: block; font-size: 18px; line-height: 1.2; } .ds-credit span { color: var(--muted); font-size: 10px; font-weight: 500; } .ds-chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; } .ds-chip-row span { border-radius: 6px; background: var(--panel-soft); color: var(--muted); padding: 4px 10px; font-size: 12px; font-weight: 500; }"
+    },
+    {
+      "name": "Accent Chip",
+      "kind": "chip",
+      "refersTo": "chip-accent",
+      "description": "Use for specialized elective tracks and selected course metadata.",
+      "html": "<span class=\"ds-chip-accent\">Data Science</span>",
+      "css": ".ds-chip-accent { display: inline-flex; align-items: center; border-radius: 6px; background: var(--accent-soft); color: var(--accent); padding: 4px 10px; font-family: var(--font-bai-jamjuree), system-ui, sans-serif; font-size: 12px; font-weight: 600; line-height: 1.4; }"
+    },
+    {
+      "name": "Desktop Navigation",
+      "kind": "nav",
+      "refersTo": "navigation-desktop",
+      "description": "Sticky top navigation for desktop year selection and source document access.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-brand\" href=\"#\"><span>69</span>NextDST</a><div><a class=\"ds-nav-link ds-active\" href=\"#\">ปี 1</a><a class=\"ds-nav-link\" href=\"#\">ปี 2</a></div></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; height: 64px; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--page) 88%, transparent); color: var(--text); padding: 0 32px; font-family: var(--font-bai-jamjuree), system-ui, sans-serif; } .ds-brand { display: inline-flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font-weight: 600; } .ds-brand span { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 6px; background: var(--text); color: var(--page); font-size: 14px; } .ds-nav div { display: flex; gap: 8px; } .ds-nav-link { border-radius: 6px; color: var(--muted); padding: 8px 12px; text-decoration: none; font-size: 14px; font-weight: 500; transition: background-color 180ms ease, color 180ms ease; } .ds-nav-link:hover, .ds-nav-link.ds-active { background: var(--panel-soft); color: var(--text); } .ds-nav-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }"
+    },
+    {
+      "name": "Empty Results",
+      "kind": "custom",
+      "refersTo": "empty-results",
+      "description": "Recovery state shown when course filters return no matches.",
+      "html": "<div class=\"ds-empty\"><h3>ไม่พบรายวิชาที่ตรงกับเงื่อนไข</h3><p>ลองลดเงื่อนไขการกรองหรือค้นหาด้วยรหัสวิชา</p></div>",
+      "css": ".ds-empty { border: 1px dashed var(--line-strong); border-radius: 8px; background: var(--panel-soft); color: var(--text); padding: 32px; text-align: center; font-family: var(--font-bai-jamjuree), system-ui, sans-serif; } .ds-empty h3 { margin: 0; font-size: 18px; line-height: 1.55; font-weight: 600; } .ds-empty p { margin: 8px 0 0; color: var(--muted); font-size: 14px; line-height: 1.7; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Clear Study Desk",
+    "overview": "NextDST 69 should feel like a prepared study desk for a new DST student: ordered, quiet, and immediately useful. The interface serves lookup and orientation, so the visual system stays restrained, uses a single Thai-ready sans family, and keeps every surface close to the student's next action.\n\nThe product rejects difficult UX, hidden navigation, dense PDF-like pages, unclear filters, and decorative dashboard behavior. Visual decisions must help a student choose a year, read the study plan, scan course groups, and recover from empty results without guessing.",
+    "keyCharacteristics": [
+      "Restrained neutral surfaces with one academic green accent.",
+      "Thai-first typography using Bai Jamjuree at practical product UI sizes.",
+      "Small-radius controls and cards that keep the interface compact.",
+      "Borders and tonal layering carry structure before shadows.",
+      "Motion is short and state-driven, never a page-load performance."
+    ],
+    "rules": [
+      {
+        "name": "The One Accent Rule",
+        "body": "Use the green accent for current state, links, focus, and track information only. Do not add new hue families for course categories unless the data model requires it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Neutral First Rule",
+        "body": "Structure the page with panel contrast, borders, spacing, and typography before reaching for saturated color.",
+        "section": "colors"
+      },
+      {
+        "name": "The Thai Readability Rule",
+        "body": "Do not compress Thai line-height to match English UI density. Thai body and helper text need enough vertical air to scan.",
+        "section": "typography"
+      },
+      {
+        "name": "The Product Scale Rule",
+        "body": "Avoid oversized marketing type. This is a curriculum tool, so headings should be stable, readable, and task-sized.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Surfaces are flat at rest. Shadows appear only for interactive lift or overlay hierarchy.",
+        "section": "elevation"
+      },
+      {
+        "name": "The No Ghost Card Rule",
+        "body": "Do not pair a decorative wide shadow with a 1px border. If a card needs structure, use the existing border and low shadow vocabulary.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use page, panel, panel-soft, and line to create structure before adding color.",
+      "Do keep the green accent rare and functional for focus, links, active states, and track chips.",
+      "Do preserve Bai Jamjuree as the only family unless the curriculum source demands a distinct monospace code treatment.",
+      "Do keep controls at least 44px tall on touch surfaces.",
+      "Do preserve visible focus states and reduced-motion alternatives for WCAG AA.",
+      "Do keep course data scannable through code badges, titles, credits, and metadata chips."
+    ],
+    "donts": [
+      "Don't create difficult UX, hidden navigation, dense PDF-like pages, unclear filters, or interfaces that make students guess where to start.",
+      "Don't make the app feel like a generic marketing landing page or a decorative dashboard where visual style gets in the way of course lookup.",
+      "Don't use gradient text, glass cards, side-stripe card borders, or decorative chart-like hero metrics.",
+      "Don't add saturated category colors to every course group without a data reason.",
+      "Don't use motion that does not explain state changes. Product motion must stay between 150ms and 250ms unless the mobile drawer needs a stronger physical transition.",
+      "Don't hide the source document link or bury year navigation behind ambiguous labels."
+    ]
+  }
+}
