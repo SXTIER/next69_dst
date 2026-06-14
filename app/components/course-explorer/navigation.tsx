@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { sourceDocumentUrl } from "@/app/data/curriculum";
 import { getYearCopy, yearOptions } from "./year-copy";
-import { BurgerIcon, CloseIcon, DocumentIcon, HomeIcon, MoonIcon, SunIcon, YearNavIcon, motionTiming, stateTransition } from "./ui";
+import { BurgerIcon, CloseIcon, DocumentIcon, HomeIcon, MoonIcon, ScheduleIcon, SunIcon, YearNavIcon, motionTiming, stateTransition } from "./ui";
 
 export function DesktopNav({ activeYear }: { activeYear?: number }) {
   return (
@@ -32,6 +32,9 @@ export function DesktopNav({ activeYear }: { activeYear?: number }) {
               {getYearCopy(year).navLabel}
             </Link>
           ))}
+          <Link className="rounded-md px-3 py-2 transition hover:bg-[var(--panel-soft)] hover:text-[var(--text)] active:scale-[0.98]" href="/schedule">
+            ตารางเรียน
+          </Link>
           <a
             className="rounded-md px-3 py-2 transition hover:bg-[var(--panel-soft)] hover:text-[var(--text)] active:scale-[0.98]"
             href={sourceDocumentUrl}
@@ -108,17 +111,23 @@ export function MobileSidebar({ activeYear }: { activeYear?: number }) {
 
               <div className="mt-8 flex flex-1 flex-col gap-2 px-3">
                 <MobileLink href="/" label="Home" detail="เลือกชั้นปี" icon={<HomeIcon />} onNavigate={close} />
-                {yearOptions.map((year) => (
-                  <MobileLink
-                    key={year}
-                    href={`/year/${year}`}
-                    label={getYearCopy(year).sidebarLabel}
-                    detail={activeYear === year ? "กำลังเปิดอยู่" : "ดูแผนการเรียน"}
-                    icon={<YearNavIcon year={year} />}
-                    active={activeYear === year}
-                    onNavigate={close}
-                  />
-                ))}
+
+                {/* Year links — compact tree items */}
+                <div className="ml-4 pl-5 border-l-2 border-[var(--line)] flex flex-col">
+                  {yearOptions.map((year) => (
+                    <TreeLink
+                      key={year}
+                      href={`/year/${year}`}
+                      label={getYearCopy(year).sidebarLabel}
+                      detail={activeYear === year ? "กำลังเปิดอยู่" : "ดูแผนการเรียน"}
+                      icon={<YearNavIcon year={year} />}
+                      active={activeYear === year}
+                      onNavigate={close}
+                    />
+                  ))}
+                </div>
+
+                <MobileLink href="/schedule" label="ตารางเรียน" detail="ตารางเรียนรายภาค" icon={<ScheduleIcon />} onNavigate={close} />
                 <MobileLink href={sourceDocumentUrl} label="PDF" detail="เอกสารต้นฉบับ" icon={<DocumentIcon />} external onNavigate={close} />
               </div>
 
@@ -186,6 +195,53 @@ function MobileLink({
   return (
     <Link href={href} onClick={onNavigate} className={className}>
       {content}
+    </Link>
+  );
+}
+
+/**
+ * Compact tree link for items indented under a parent in the mobile sidebar.
+ */
+function TreeLink({
+  href,
+  label,
+  detail,
+  icon,
+  active,
+  onNavigate,
+}: {
+  href: string;
+  label: string;
+  detail: string;
+  icon: ReactNode;
+  active?: boolean;
+  onNavigate: () => void;
+}) {
+  return (
+    <Link
+      href={href}
+      onClick={onNavigate}
+      className={`group flex h-10 items-center justify-start gap-2 rounded-md border px-2 text-sm font-semibold transition active:scale-[0.99] ${
+        active
+          ? "border-[var(--line)] bg-[var(--panel-soft)] text-[var(--text)]"
+          : "border-transparent text-[var(--muted)] hover:border-[var(--line)] hover:bg-[var(--panel-soft)] hover:text-[var(--text)]"
+      }`}
+    >
+      <span
+        className={`grid h-7 w-7 shrink-0 place-items-center rounded-md transition ${
+          active
+            ? "bg-[var(--text)] text-[var(--page)]"
+            : "bg-[var(--panel-soft)] text-[var(--muted)] group-hover:text-[var(--text)]"
+        }`}
+        aria-hidden="true"
+      >
+        {icon}
+      </span>
+      <span className="flex min-w-0 flex-col overflow-hidden">
+        <span className="truncate text-[12px] text-[var(--text)]">{label}</span>
+        <span className="truncate text-[10px] font-medium text-[var(--muted)]">{detail}</span>
+      </span>
+      {active ? <span className="ml-auto text-[10px] text-[var(--accent)]">✓</span> : null}
     </Link>
   );
 }

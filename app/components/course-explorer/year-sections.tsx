@@ -84,7 +84,7 @@ export function YearCard({ year }: { year: number }) {
   return (
     <Link
       href={`/year/${year}`}
-        className="group rounded-lg border border-[var(--line)] bg-[var(--panel)] p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-[var(--line-strong)] hover:shadow-md active:scale-[0.995]"
+        className="group rounded-lg bg-[var(--panel)] p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:scale-[0.995]"
     >
       <div className="flex items-start justify-between gap-3">
         <div>
@@ -106,7 +106,7 @@ export function YearCard({ year }: { year: number }) {
         </div>
       </div>
       {yearView.requirementSlots.length > 0 ? (
-        <p className="mt-4 border-t border-[var(--line)] pt-3 text-xs leading-5 text-[var(--muted)]">
+        <p className="mt-4 pt-3 text-xs leading-5 text-[var(--muted)]">
           มีเงื่อนไขเลือกเพิ่ม {yearView.requirementSlots.length} รายการ แสดงแยกจากรายวิชาบังคับ
         </p>
       ) : null}

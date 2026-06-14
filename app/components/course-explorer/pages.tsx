@@ -24,7 +24,7 @@ export function YearSelectorPage() {
       <main className="min-h-screen">
         <HomeHero />
 
-        <section id="years" className="border-y border-[var(--line)] bg-[var(--panel-soft)]">
+        <section id="years" className="bg-[var(--panel-soft)]">
           <div className="mx-auto max-w-7xl px-5 py-8 sm:px-8 lg:px-10">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
