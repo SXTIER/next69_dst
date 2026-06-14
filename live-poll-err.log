@@ -1,2 +1,0 @@
-[impeccable-poll] stream mode: one JSON object per line on stdout; use --reply while this process stays running
-Live server not running. Start one with: npx impeccable live
