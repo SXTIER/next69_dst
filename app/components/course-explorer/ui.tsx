@@ -51,7 +51,7 @@ export function AccordionItem({ title, defaultOpen, children }: { title: string;
             transition={stateTransition(shouldReduceMotion, motionTiming.reveal)}
             className="overflow-hidden"
           >
-            <div className="border-t border-[var(--line)] px-6">{children}</div>
+            <div className="border-t border-[var(--line)] p-6">{children}</div>
           </motion.div>
         ) : null}
       </AnimatePresence>
