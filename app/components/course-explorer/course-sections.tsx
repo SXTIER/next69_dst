@@ -73,7 +73,7 @@ export function CourseAccordionSection({
             transition={stateTransition(shouldReduceMotion, motionTiming.reveal)}
             className="overflow-hidden"
           >
-            <div className="border-t border-[var(--line)] px-6">{children}</div>
+            <div className="border-t border-[var(--line)] p-3">{children}</div>
           </motion.div>
         ) : null}
       </AnimatePresence>
@@ -521,7 +521,7 @@ function CourseCard({
         animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
         exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
         transition={listTransition(index, reduceMotion)}
-        className="w-full bg-[var(--panel)] py-6 text-left transition hover:bg-[var(--panel-soft)] active:bg-[var(--panel-soft)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--accent)]"
+        className="w-full bg-[var(--panel)] px-6 py-6 text-left transition hover:bg-[var(--panel-soft)] active:bg-[var(--panel-soft)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--accent)]"
         aria-label={`ดูรายละเอียดรายวิชา ${course.code} ${course.titleTh}`}
       >
         <div className="flex items-start justify-between gap-2">

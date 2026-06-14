@@ -40,10 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="th" className={`${baiJamjuree.variable} h-full scroll-smooth`} data-scroll-behavior="smooth" suppressHydrationWarning>
-      <body className="min-h-full">{children}{/* impeccable-live-start */}
-<script src="http://localhost:8400/live.js"></script>
-{/* impeccable-live-end */}
-</body>
+      <body className="min-h-full">{children}</body>
     </html>
   );
 }
