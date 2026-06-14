@@ -18,7 +18,7 @@ export function DesktopNav({ activeYear }: { activeYear?: number }) {
         </Link>
         <div className="flex items-center gap-2 text-sm font-medium text-[var(--muted)]">
           <Link className="rounded-md px-3 py-2 transition hover:bg-[var(--panel-soft)] hover:text-[var(--text)] active:scale-[0.98]" href="/#years">
-            เลือกปี
+            หน้าหลัก
           </Link>
           {yearOptions.map((year) => (
             <Link
@@ -221,7 +221,7 @@ function TreeLink({
     <Link
       href={href}
       onClick={onNavigate}
-      className={`group flex h-10 items-center justify-start gap-2 rounded-md border px-2 text-sm font-semibold transition active:scale-[0.99] ${
+      className={`group flex h-10 items-center justify-start gap-2 rounded-md border px-2 my-1 text-sm font-semibold transition active:scale-[0.99] ${
         active
           ? "border-[var(--line)] bg-[var(--panel-soft)] text-[var(--text)]"
           : "border-transparent text-[var(--muted)] hover:border-[var(--line)] hover:bg-[var(--panel-soft)] hover:text-[var(--text)]"
