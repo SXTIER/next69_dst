@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
@@ -9,6 +10,9 @@ import { getYearCopy, yearOptions } from "./year-copy";
 import { BurgerIcon, CloseIcon, DocumentIcon, HomeIcon, MoonIcon, ScheduleIcon, SunIcon, YearNavIcon, motionTiming, stateTransition } from "./ui";
 
 export function DesktopNav({ activeYear }: { activeYear?: number }) {
+  const router = useRouter();
+  const [yearValue, setYearValue] = useState(activeYear ? String(activeYear) : "home");
+
   return (
     <header className="sticky top-0 z-40 hidden border-b border-[var(--line)] bg-[color-mix(in_srgb,var(--page)_88%,transparent)] backdrop-blur md:block">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-8 lg:px-10">
@@ -17,21 +21,13 @@ export function DesktopNav({ activeYear }: { activeYear?: number }) {
           <span>NextDST</span>
         </Link>
         <div className="flex items-center gap-2 text-sm font-medium text-[var(--muted)]">
-          <Link className="rounded-md px-3 py-2 transition hover:bg-[var(--panel-soft)] hover:text-[var(--text)] active:scale-[0.98]" href="/#years">
-            หน้าหลัก
-          </Link>
-          {yearOptions.map((year) => (
-            <Link
-              key={year}
-              aria-current={activeYear === year ? "page" : undefined}
-              className={`rounded-md px-3 py-2 transition hover:bg-[var(--panel-soft)] hover:text-[var(--text)] active:scale-[0.98] ${
-                activeYear === year ? "bg-[var(--panel-soft)] text-[var(--text)]" : ""
-              }`}
-              href={`/year/${year}`}
-            >
-              {getYearCopy(year).navLabel}
-            </Link>
-          ))}
+          <YearPicker
+            value={yearValue}
+            onChange={(year) => {
+              setYearValue(year);
+              router.push(year === "home" ? "/#years" : `/year/${year}`);
+            }}
+          />
           <Link className="rounded-md px-3 py-2 transition hover:bg-[var(--panel-soft)] hover:text-[var(--text)] active:scale-[0.98]" href="/schedule">
             ตารางเรียน
           </Link>
@@ -47,6 +43,35 @@ export function DesktopNav({ activeYear }: { activeYear?: number }) {
         </div>
       </nav>
     </header>
+  );
+}
+
+function YearPicker({ value, onChange }: { value: string; onChange: (year: string) => void }) {
+  return (
+    <label className="relative">
+      <span className="sr-only">เลือกชั้นปี</span>
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="h-10 appearance-none rounded-md border border-[var(--line)] bg-[var(--field)] px-3 pr-8 text-sm font-medium text-[var(--text)] outline-none transition focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent-soft)]"
+      >
+        <option value="home">เลือกชั้นปี</option>
+        {yearOptions.map((year) => (
+          <option key={year} value={year}>
+            {getYearCopy(year).navLabel}
+          </option>
+        ))}
+      </select>
+      <ChevronDown className="pointer-events-none absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--muted)]" />
+    </label>
+  );
+}
+
+function ChevronDown({ className }: { className?: string }) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="m6 9 6 6 6-6" />
+    </svg>
   );
 }
 
