@@ -23,12 +23,25 @@
 # misc
 .DS_Store
 *.pem
+*.log
+*.err.log
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
+# auto-generated agent & tool config
+.agents/
+.cline/
+.impeccable/
+
+# build / runtime artifacts
+.next-start.err.log
+.next-start.log
+live-poll-err.log
+live-poll.log
+
+# Playwright CLI snapshots
+.playwright-cli/
+
+# test output
+test-results/
 
 # env files (can opt-in for committing if needed)
 .env*

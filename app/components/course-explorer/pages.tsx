@@ -6,7 +6,10 @@ import { type Course } from "@/app/data/curriculum";
 import { applyCourseFilters, sumCredits, type CourseFilters } from "@/app/lib/curriculum";
 import { getYearCurriculumView } from "@/app/lib/year-curriculum-view";
 import { CourseDetailModal } from "./course-detail-modal";
-import { CourseAccordionSection, CourseFiltersPanel, CourseResultsList, RequirementOptionsSection, initialFilters } from "./course-sections";
+import { CourseAccordionSection } from "./course-accordion";
+import { CourseFiltersPanel, initialFilters } from "./course-filters";
+import { CourseResultsList } from "./course-list";
+import { RequirementOptionsSection } from "./requirement-options";
 import { DesktopNav, MobileSidebar } from "./navigation";
 import { CourseSkeleton, SectionEmptyState } from "./ui";
 import { HomeHero, HomeSummaryPanel, ResponsiveYearOverview, YearCard, YearHero } from "./year-sections";
@@ -28,9 +31,9 @@ export function YearSelectorPage() {
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">เลือกชั้นปี</p>
                 <h2 className="mt-2 text-2xl font-semibold">เลือกชั้นปีของนักศึกษา</h2>
               </div>
-              <p className="max-w-2xl text-sm leading-6 text-[var(--muted)]">
+              {/* <p className="max-w-2xl text-sm leading-6 text-[var(--muted)]">
                 แยกเนื้อหาแต่ละปีออกเป็นหน้าเฉพาะ เพื่อลดความแน่นของข้อมูลและทำให้ดูแผนการเรียนได้เร็วขึ้น
-              </p>
+              </p> */}
             </div>
 
             <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

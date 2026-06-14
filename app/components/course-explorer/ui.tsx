@@ -1,8 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import type { ReactNode } from "react";
-import { useState } from "react";
+import { motion } from "framer-motion";
 
 export const motionTiming = {
   instant: 0.01,
@@ -27,39 +25,7 @@ export function listTransition(index: number, reduceMotion?: boolean | null) {
       };
 }
 
-export function AccordionItem({ title, defaultOpen, children }: { title: string; defaultOpen?: boolean; children: ReactNode }) {
-  const [isOpen, setIsOpen] = useState(Boolean(defaultOpen));
-  const shouldReduceMotion = useReducedMotion();
-
-  return (
-    <div className="rounded-lg border border-[var(--line)] bg-[var(--panel)] shadow-sm">
-      <button
-        type="button"
-        onClick={() => setIsOpen((current) => !current)}
-        className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left transition hover:bg-[var(--panel-soft)] active:bg-[var(--panel-soft)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--accent)]"
-        aria-expanded={isOpen}
-      >
-        <span className="text-sm font-semibold">{title}</span>
-        <ChevronIcon open={isOpen} />
-      </button>
-      <AnimatePresence initial={false}>
-        {isOpen ? (
-          <motion.div
-            initial={shouldReduceMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
-            animate={shouldReduceMotion ? { opacity: 1 } : { height: "auto", opacity: 1 }}
-            exit={shouldReduceMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
-            transition={stateTransition(shouldReduceMotion, motionTiming.reveal)}
-            className="overflow-hidden"
-          >
-            <div className="border-t border-[var(--line)] p-6">{children}</div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
-    </div>
-  );
-}
-
-export function SectionEmptyState({ children }: { children: ReactNode }) {
+export function SectionEmptyState({ children }: { children: React.ReactNode }) {
   return (
     <div className="rounded-lg border border-dashed border-[var(--line-strong)] bg-[var(--panel-soft)] p-6 text-center text-sm text-[var(--muted)]">
       {children}

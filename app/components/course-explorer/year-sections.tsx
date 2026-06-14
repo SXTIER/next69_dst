@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { curriculumSummary, sourceDocumentUrl, studyPlan, termLabels, type StudyTerm } from "@/app/data/curriculum";
 import { getYearCurriculumView } from "@/app/lib/year-curriculum-view";
-import { AccordionItem, Metric } from "./ui";
+import { Metric } from "./ui";
+import { AccordionItem } from "./course-accordion";
 import { getYearCopy } from "./year-copy";
 
 export function HomeHero() {
