@@ -7,6 +7,7 @@ import { categoryLabels, termLabels, trackLabels, type Course, type CourseCatego
 import type { CourseFilters, CourseSort } from "@/app/lib/curriculum";
 import type { ElectiveOptionGroup, RequirementSlot } from "@/app/lib/year-curriculum-view";
 import { ChevronIcon, listTransition, motionTiming, stateTransition } from "./ui";
+import { Search } from "lucide-react";
 
 const categoryOptions = Object.keys(categoryLabels) as CourseCategory[];
 const trackOptions = Object.keys(trackLabels) as SpecializedTrack[];
@@ -72,7 +73,7 @@ export function CourseAccordionSection({
             transition={stateTransition(shouldReduceMotion, motionTiming.reveal)}
             className="overflow-hidden"
           >
-            <div className="border-t border-[var(--line)] p-4">{children}</div>
+            <div className="border-t border-[var(--line)] px-6">{children}</div>
           </motion.div>
         ) : null}
       </AnimatePresence>
@@ -225,22 +226,22 @@ export function CourseFiltersPanel({
         <div className="min-w-0 flex-1">
           <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">ค้นหา</p>
               <h2 id={`filter-heading-${panelId}`} className="mt-1 text-lg font-semibold">
                 ค้นหารายวิชา
               </h2>
             </div>
             <p className="text-sm leading-6 text-[var(--muted)]">
-              {activeFilters.length > 0 ? `ใช้อยู่ ${activeFilters.length} ตัวกรอง` : "พิมพ์รหัสหรือชื่อวิชาเพื่อคัดรายการทันที"}
+              {activeFilters.length > 0 ? `ใช้อยู่ ${activeFilters.length} ตัวกรอง` : ""}
             </p>
           </div>
-          <label className="mt-3 block">
+          <label className="mt-3 relative block">
+            <Search className="pointer-events-none absolute z-10 ml-3 mt-[11px] size-5 text-[var(--muted)]" aria-hidden="true" />
             <span className="sr-only">ค้นหารายวิชา</span>
             <input
               value={filters.query}
               onChange={(event) => setFilter("query", event.target.value)}
               placeholder="ค้นหาด้วยรหัสวิชา, ชื่อไทย, English"
-              className="h-11 w-full rounded-md border border-[var(--line)] bg-[var(--field)] px-3 text-sm outline-none transition placeholder:text-[var(--muted)] focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent-soft)]"
+              className="h-11 w-full rounded-md border border-[var(--line)] bg-[var(--field)] pl-10 pr-3 text-sm outline-none transition placeholder:text-[var(--muted)] focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent-soft)]"
             />
           </label>
         </div>
@@ -332,7 +333,7 @@ export function CourseFiltersPanel({
                 />
 
                 <FilterSelect
-                  label="กลุ่มเลือกเฉพาะด้าน"
+                  label="กลุ่มเลือกเฉพาะด้าน (ปี 3)"
                   value={filters.track}
                   onChange={(value) => setFilter("track", value as SpecializedTrack | "all")}
                   options={[
@@ -413,7 +414,7 @@ export function CourseResultsList({
   return (
     <>
       <AnimatePresence mode="popLayout">
-        <motion.div layout className="grid gap-3 lg:hidden">
+        <motion.div layout className="divide-y divide-[var(--line)] lg:hidden">
           {courses.map((course, index) => (
             <CourseCard
               key={`${course.code}-${course.category}-${course.track ?? "base"}`}
@@ -421,6 +422,7 @@ export function CourseResultsList({
               reduceMotion={reduceMotion}
               index={index}
               onOpen={onOpenCourse}
+              mobile
             />
           ))}
         </motion.div>
@@ -498,15 +500,55 @@ function CourseCard({
   course,
   reduceMotion,
   compact,
+  mobile,
   index = 0,
   onOpen,
 }: {
   course: Course;
   reduceMotion?: boolean | null;
   compact?: boolean;
+  mobile?: boolean;
   index?: number;
   onOpen: (course: Course) => void;
 }) {
+  if (mobile) {
+    return (
+      <motion.button
+        type="button"
+        onClick={() => onOpen(course)}
+        layout
+        initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 8 }}
+        animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+        exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
+        transition={listTransition(index, reduceMotion)}
+        className="w-full bg-[var(--panel)] py-6 text-left transition hover:bg-[var(--panel-soft)] active:bg-[var(--panel-soft)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--accent)]"
+        aria-label={`ดูรายละเอียดรายวิชา ${course.code} ${course.titleTh}`}
+      >
+        <div className="flex items-start justify-between gap-2">
+          <div className="min-w-0">
+            <div className="flex items-center gap-1.5">
+              <span className="rounded-sm bg-[var(--text)] px-1.5 py-0.5 text-[11px] font-semibold text-[var(--page)]">{course.code}</span>
+              {course.thaiCode ? <span className="text-[11px] font-medium text-[var(--muted)]">{course.thaiCode}</span> : null}
+            </div>
+            <h3 className="mt-3 text-s font-semibold leading-5">{course.titleTh}</h3>
+            {course.titleEn ? <p className="mt-2 text-xs leading-5 text-[var(--muted)]">{course.titleEn}</p> : null}
+          </div>
+          <div className="shrink-0 rounded-sm border border-[var(--line)] px-2 py-1 text-center">
+            <div className="text-sm font-semibold">{course.credits}</div>
+            <div className="text-[9px] font-medium text-[var(--muted)]">หน่วยกิต</div>
+          </div>
+        </div>
+        <div className="mt-4 flex flex-wrap gap-1.5 text-[11px] font-medium">
+          <span className="rounded-sm bg-[var(--panel-soft)] px-1.5 py-0.5 text-[var(--muted)]">{categoryLabels[course.category]}</span>
+          {course.year ? <span className="rounded-sm bg-[var(--panel-soft)] px-1.5 py-0.5 text-[var(--muted)]">ปี {course.year}</span> : null}
+          {course.term ? <span className="rounded-sm bg-[var(--panel-soft)] px-1.5 py-0.5 text-[var(--muted)]">{termLabels[course.term]}</span> : null}
+          {course.track ? <span className="rounded-sm bg-[var(--accent-soft)] px-1.5 py-0.5 text-[var(--accent)]">{trackLabels[course.track]}</span> : null}
+        </div>
+        {course.note ? <p className="mt-2 text-xs leading-5 text-[var(--muted)]">{course.note}</p> : null}
+      </motion.button>
+    );
+  }
+
   return (
     <motion.button
       type="button"
