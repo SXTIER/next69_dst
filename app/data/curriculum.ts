@@ -31,7 +31,7 @@ export type StudyTerm = {
 };
 
 export const sourceDocumentUrl =
-  "https://drive.google.com/file/d/1zOPm4crN5GzQTV88M6YInP_UXfNJtEVP/view?usp=sharing";
+  "https://drive.google.com/drive/folders/1lbHWdXF1CCu0_657iaGv1tDnk8Qlpi7s?usp=sharing";
 
 export const categoryLabels: Record<CourseCategory, string> = {
   general: "ศึกษาทั่วไป",

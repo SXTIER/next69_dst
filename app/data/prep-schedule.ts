@@ -117,7 +117,7 @@ export const prepSchedule: PrepScheduleWeek[] = [
         events: [
           {
             time: "",
-            title: "OBE DAY (ปฐมนิเทศนักศึกษา)",
+            title: "OBE DAY (วันหยุด)",
           },
         ],
       },
