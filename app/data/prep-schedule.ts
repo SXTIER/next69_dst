@@ -459,7 +459,15 @@ export const prepSchedule: PrepScheduleWeek[] = [
           },
         ],
       },
-      { date: 24, month: "Jul", dayName: "Fri", dayNameTh: dayNamesTh.Fri, events: [] },
+      {
+        date: 24, month: "Jul", dayName: "Fri", dayNameTh: dayNamesTh.Fri, events: [
+          {
+            time: "",
+            title: 'Freshman Welcome Activity "Rak Nong" (*Optional)',
+            variant: "info",
+          },
+        ]
+      },
       {
         date: 25, month: "Jul", dayName: "Sat", dayNameTh: dayNamesTh.Sat,
         events: [
