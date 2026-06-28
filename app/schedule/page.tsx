@@ -389,7 +389,7 @@ const DayCellContent = memo(function DayCellContent({ day }: { day: PrepSchedule
             <div
               key={idx}
               className={`rounded px-3 py-2 ${event.variant === "info"
-                  ? "border-none bg-(--accent-soft)"
+                  ? "border-noneOBE DAY (งดเรียน)  bg-(--accent-soft)"
                   : "bg-(--panel-soft)"
                 }`}
             >
