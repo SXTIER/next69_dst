@@ -53,6 +53,16 @@ const monthLabel: Record<string, string> = {
   Aug: "สิงหาคม",
 };
 
+function isBeforeNoon(timeStr: string): boolean {
+  if (!timeStr) return true;
+  const match = timeStr.match(/^(\d+)/);
+  if (match) {
+    const hour = parseInt(match[1], 10);
+    return hour < 12;
+  }
+  return true;
+}
+
 function getTodaySchedule(): { week: number; day: PrepScheduleDay } | null | "before" | "after" {
   const now = new Date();
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -96,24 +106,8 @@ export default function SchedulePage() {
         </header>
 
         <div className="space-y-4 sm:space-y-6">
-          {/* Card 1: Today's Schedule Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col rounded-xl border border-(--line) bg-(--panel) p-4 sm:p-6 shadow-sm"
-          >
-            <div className="flex items-center gap-2 border-b border-(--line) pb-4">
-              <CalendarIcon className="h-5 w-5 text-(--accent)" />
-              <h2 className="text-base sm:text-lg font-semibold text-(--text)">วันนี้เรียนอะไร?</h2>
-            </div>
 
-            <div className="flex-1 mt-4 sm:mt-6">
-              <TodayContent todayData={todayData} />
-            </div>
-          </motion.div>
-
-          {/* Card 2: PDF Card (Small Horizontal) */}
+          {/* Card 1: PDF Card (Small Horizontal) */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -168,6 +162,25 @@ export default function SchedulePage() {
               </svg>
             </a>
           </motion.div>
+
+          {/* Card 2: Today's Schedule Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col rounded-xl border border-(--line) bg-(--panel) p-4 sm:p-6 shadow-sm"
+          >
+            <div className="flex items-center gap-2 border-b border-(--line) pb-4">
+              <CalendarIcon className="h-5 w-5 text-(--accent)" />
+              <h2 className="text-base sm:text-lg font-semibold text-(--text)">วันนี้เรียนอะไร?</h2>
+            </div>
+
+            <div className="flex-1 mt-4 sm:mt-6">
+              <TodayContent todayData={todayData} />
+            </div>
+          </motion.div>
+
+          
         </div>
       </main>
     </div>
@@ -246,7 +259,11 @@ function TodayContent({
               }`}
             >
               {event.time ? (
-                <span className="inline-block rounded bg-(--accent) px-2 py-0.5 text-[9px] sm:text-[10px] font-semibold text-(--page)">
+                <span className={`inline-block rounded px-2 py-0.5 text-[9px] sm:text-[10px] font-semibold text-white ${
+                  isBeforeNoon(event.time)
+                    ? "bg-emerald-600 dark:bg-emerald-700"
+                    : "bg-red-600 dark:bg-red-700"
+                }`}>
                   {event.time}
                 </span>
               ) : null}

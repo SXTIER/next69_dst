@@ -1,27 +1,27 @@
 export interface PrepScheduleEvent {
-  time: string
-  title: string
-  instructor?: string
-  room?: string
-  note?: string
-  variant?: "info"
+  time: string;
+  title: string;
+  instructor?: string;
+  room?: string;
+  note?: string;
+  variant?: "info";
 }
 
 export interface PrepScheduleDay {
-  date: number
-  month: string
-  dayName: string
-  dayNameTh: string
-  events: PrepScheduleEvent[]
-  isHoliday?: boolean
-  holidayName?: string
+  date: number;
+  month: string;
+  dayName: string;
+  dayNameTh: string;
+  events: PrepScheduleEvent[];
+  isHoliday?: boolean;
+  holidayName?: string;
 }
 
 export interface PrepScheduleWeek {
-  weekNumber: number
-  dateRange: string
-  dateRangeTh: string
-  days: PrepScheduleDay[]
+  weekNumber: number;
+  dateRange: string;
+  dateRangeTh: string;
+  days: PrepScheduleDay[];
 }
 
 const dayNamesTh: Record<string, string> = {
@@ -45,12 +45,15 @@ export const prepSchedule: PrepScheduleWeek[] = [
       { date: 23, month: "Jun", dayName: "Tue", dayNameTh: dayNamesTh.Tue, events: [] },
       { date: 24, month: "Jun", dayName: "Wed", dayNameTh: dayNamesTh.Wed, events: [] },
       {
-        date: 25, month: "Jun", dayName: "Thu", dayNameTh: dayNamesTh.Thu,
+        date: 25,
+        month: "Jun",
+        dayName: "Thu",
+        dayNameTh: dayNamesTh.Thu,
         events: [
           {
             time: "14:00 - 15:00",
-            title: "MUDST 'Toefl ITP Explanation (Online)",
-            note: "Webex: 2641 685 0228 / Password: dst2026",
+            title: "MUDST 'Toefl ITP Explaination (Online)",
+            note: "Webex:2641 685 0228 / Password:dst2026",
           },
         ],
       },
@@ -65,18 +68,24 @@ export const prepSchedule: PrepScheduleWeek[] = [
     days: [
       { date: 28, month: "Jun", dayName: "Sun", dayNameTh: dayNamesTh.Sun, events: [] },
       {
-        date: 29, month: "Jun", dayName: "Mon", dayNameTh: dayNamesTh.Mon,
+        date: 29,
+        month: "Jun",
+        dayName: "Mon",
+        dayNameTh: dayNamesTh.Mon,
         events: [
           {
             time: "9:00 - 11:00",
             title: "DST' Problem Solving (2Hr)",
-            instructor: "ICT Instructor Team",
+            instructor: "ICT Instuctor Team",
             room: "Grand Auditorium (4th Floors)",
           },
         ],
       },
       {
-        date: 30, month: "Jun", dayName: "Tue", dayNameTh: dayNamesTh.Tue,
+        date: 30,
+        month: "Jun",
+        dayName: "Tue",
+        dayNameTh: dayNamesTh.Tue,
         events: [
           {
             time: "9:00 - 12:00",
@@ -91,35 +100,41 @@ export const prepSchedule: PrepScheduleWeek[] = [
         ],
       },
       {
-        date: 1, month: "Jul", dayName: "Wed", dayNameTh: dayNamesTh.Wed,
+        date: 1,
+        month: "Jul",
+        dayName: "Wed",
+        dayNameTh: dayNamesTh.Wed,
         events: [
           {
             time: "9:00 - 11:00",
             title: "DST' Problem Solving (2Hr)",
-            instructor: "ICT Instructor Team",
+            instructor: "ICT Instuctor Team",
             room: "210",
           },
         ],
       },
       {
-        date: 2, month: "Jul", dayName: "Thu", dayNameTh: dayNamesTh.Thu,
+        date: 2,
+        month: "Jul",
+        dayName: "Thu",
+        dayNameTh: dayNamesTh.Thu,
         events: [
           {
             time: "9:00 - 11:00",
             title: "DST' Problem Solving (2Hr)",
-            instructor: "ICT Instructor Team",
+            instructor: "ICT Instuctor Team",
             room: "210",
           },
         ],
       },
       {
-        date: 3, month: "Jul", dayName: "Fri", dayNameTh: dayNamesTh.Fri,
-        events: [
-          {
-            time: "",
-            title: "OBE DAY (วันหยุด)",
-          },
-        ],
+        date: 3,
+        month: "Jul",
+        dayName: "Fri",
+        dayNameTh: dayNamesTh.Fri,
+        isHoliday: true,
+        holidayName: "OBE DAY (งดการเรียนการสอน)",
+        events: [],
       },
       { date: 4, month: "Jul", dayName: "Sat", dayNameTh: dayNamesTh.Sat, events: [] },
     ],
@@ -131,18 +146,21 @@ export const prepSchedule: PrepScheduleWeek[] = [
     days: [
       { date: 5, month: "Jul", dayName: "Sun", dayNameTh: dayNamesTh.Sun, events: [] },
       {
-        date: 6, month: "Jul", dayName: "Mon", dayNameTh: dayNamesTh.Mon,
+        date: 6,
+        month: "Jul",
+        dayName: "Mon",
+        dayNameTh: dayNamesTh.Mon,
         events: [
           {
             time: "9:00 - 11:00",
             title: "DST' Problem Solving (2Hr)",
-            instructor: "ICT Instructor Team",
+            instructor: "ICT Instuctor Team",
             room: "210",
           },
           {
             time: "13:00 - 15:00",
             title: "DST English Gr.A",
-            instructor: "Aj.Zeenat (2Hr)",
+            instructor: "Aj.Rachan (2Hr)",
             room: "310",
           },
           {
@@ -157,21 +175,30 @@ export const prepSchedule: PrepScheduleWeek[] = [
             instructor: "Aj.Om (2Hr)",
             room: "312",
           },
+          {
+            time: "13:00 - 15:00",
+            title: "DST English Gr.D",
+            instructor: "Aj.Zeenat (2Hr)",
+            room: "210",
+          },
         ],
       },
       {
-        date: 7, month: "Jul", dayName: "Tue", dayNameTh: dayNamesTh.Tue,
+        date: 7,
+        month: "Jul",
+        dayName: "Tue",
+        dayNameTh: dayNamesTh.Tue,
         events: [
           {
             time: "9:00 - 11:00",
             title: "DST' Problem Solving (2Hr)",
-            instructor: "ICT Instructor Team",
-            room: "LAB103, 104, 105",
+            instructor: "ICT Instuctor Team",
+            room: "LAB103,104,105",
           },
           {
             time: "13:00 - 15:00",
             title: "DST English Gr.A",
-            instructor: "Aj.Zeenat (2Hr)",
+            instructor: "Aj.Rachan (2Hr)",
             room: "310",
           },
           {
@@ -186,10 +213,19 @@ export const prepSchedule: PrepScheduleWeek[] = [
             instructor: "Aj.Om (2Hr)",
             room: "312",
           },
+          {
+            time: "13:00 - 15:00",
+            title: "DST English Gr.D",
+            instructor: "Aj.Zeenat (2Hr)",
+            room: "210",
+          },
         ],
       },
       {
-        date: 8, month: "Jul", dayName: "Wed", dayNameTh: dayNamesTh.Wed,
+        date: 8,
+        month: "Jul",
+        dayName: "Wed",
+        dayNameTh: dayNamesTh.Wed,
         events: [
           {
             time: "9:00 - 12:00",
@@ -199,12 +235,6 @@ export const prepSchedule: PrepScheduleWeek[] = [
           },
           {
             time: "13:00 - 15:00",
-            title: "DST English Gr.A",
-            instructor: "Aj.Zeenat (2Hr)",
-            room: "310",
-          },
-          {
-            time: "13:00 - 15:00",
             title: "DST English Gr.B",
             instructor: "Aj.Prima (2Hr)",
             room: "311",
@@ -215,10 +245,19 @@ export const prepSchedule: PrepScheduleWeek[] = [
             instructor: "Aj.Om (2Hr)",
             room: "312",
           },
+          {
+            time: "13:00 - 15:00",
+            title: "DST English Gr.D",
+            instructor: "Aj.Zeenat (2Hr)",
+            room: "210",
+          },
         ],
       },
       {
-        date: 9, month: "Jul", dayName: "Thu", dayNameTh: dayNamesTh.Thu,
+        date: 9,
+        month: "Jul",
+        dayName: "Thu",
+        dayNameTh: dayNamesTh.Thu,
         events: [
           {
             time: "9:00 - 12:00",
@@ -228,12 +267,6 @@ export const prepSchedule: PrepScheduleWeek[] = [
           },
           {
             time: "13:00 - 15:00",
-            title: "DST English Gr.A",
-            instructor: "Aj.Zeenat (2Hr)",
-            room: "310",
-          },
-          {
-            time: "13:00 - 15:00",
             title: "DST English Gr.B",
             instructor: "Aj.Prima (2Hr)",
             room: "311",
@@ -244,15 +277,30 @@ export const prepSchedule: PrepScheduleWeek[] = [
             instructor: "Aj.Om (2Hr)",
             room: "312",
           },
+          {
+            time: "13:00 - 15:00",
+            title: "DST English Gr.D",
+            instructor: "Aj.Zeenat (2Hr)",
+            room: "210",
+          },
         ],
       },
       {
-        date: 10, month: "Jul", dayName: "Fri", dayNameTh: dayNamesTh.Fri,
+        date: 10,
+        month: "Jul",
+        dayName: "Fri",
+        dayNameTh: dayNamesTh.Fri,
         events: [
+          {
+            time: "9:00 - 11:00",
+            title: "DST English Gr.A",
+            instructor: "Aj.Rachan (2Hr)",
+            room: "310",
+          },
           {
             time: "13:00 - 15:00",
             title: "DST English Gr.A",
-            instructor: "Aj.Zeenat (2Hr)",
+            instructor: "Aj.Rachan (2Hr)",
             room: "310",
           },
           {
@@ -279,7 +327,10 @@ export const prepSchedule: PrepScheduleWeek[] = [
     days: [
       { date: 12, month: "Jul", dayName: "Sun", dayNameTh: dayNamesTh.Sun, events: [] },
       {
-        date: 13, month: "Jul", dayName: "Mon", dayNameTh: dayNamesTh.Mon,
+        date: 13,
+        month: "Jul",
+        dayName: "Mon",
+        dayNameTh: dayNamesTh.Mon,
         events: [
           {
             time: "9:00 - 12:00",
@@ -290,7 +341,7 @@ export const prepSchedule: PrepScheduleWeek[] = [
           {
             time: "13:00 - 15:00",
             title: "DST English Gr.A",
-            instructor: "Aj.Zeenat (2Hr)",
+            instructor: "Aj.Rachan (2Hr)",
             room: "310",
           },
           {
@@ -305,10 +356,19 @@ export const prepSchedule: PrepScheduleWeek[] = [
             instructor: "Aj.Om (2Hr)",
             room: "312",
           },
+          {
+            time: "13:00 - 15:00",
+            title: "DST English Gr.D",
+            instructor: "Aj.Zeenat (2Hr)",
+            room: "210",
+          },
         ],
       },
       {
-        date: 14, month: "Jul", dayName: "Tue", dayNameTh: dayNamesTh.Tue,
+        date: 14,
+        month: "Jul",
+        dayName: "Tue",
+        dayNameTh: dayNamesTh.Tue,
         events: [
           {
             time: "9:00 - 12:00",
@@ -319,7 +379,7 @@ export const prepSchedule: PrepScheduleWeek[] = [
           {
             time: "13:00 - 15:00",
             title: "DST English Gr.A",
-            instructor: "Aj.Zeenat (2Hr)",
+            instructor: "Aj.Rachan (2Hr)",
             room: "310",
           },
           {
@@ -334,10 +394,19 @@ export const prepSchedule: PrepScheduleWeek[] = [
             instructor: "Aj.Om (2Hr)",
             room: "312",
           },
+          {
+            time: "13:00 - 15:00",
+            title: "DST English Gr.D",
+            instructor: "Aj.Zeenat (2Hr)",
+            room: "210",
+          },
         ],
       },
       {
-        date: 15, month: "Jul", dayName: "Wed", dayNameTh: dayNamesTh.Wed,
+        date: 15,
+        month: "Jul",
+        dayName: "Wed",
+        dayNameTh: dayNamesTh.Wed,
         events: [
           {
             time: "9:00 - 12:00",
@@ -347,12 +416,6 @@ export const prepSchedule: PrepScheduleWeek[] = [
           },
           {
             time: "13:00 - 15:00",
-            title: "DST English Gr.A",
-            instructor: "Aj.Zeenat (2Hr)",
-            room: "310",
-          },
-          {
-            time: "13:00 - 15:00",
             title: "DST English Gr.B",
             instructor: "Aj.Prima (2Hr)",
             room: "311",
@@ -363,19 +426,22 @@ export const prepSchedule: PrepScheduleWeek[] = [
             instructor: "Aj.Om (2Hr)",
             room: "312",
           },
+          {
+            time: "14:00 - 16:00",
+            title: "DST English Gr.D",
+            instructor: "Aj.Zeenat (2Hr)",
+            room: "210",
+          },
         ],
       },
       {
-        date: 16, month: "Jul", dayName: "Thu", dayNameTh: dayNamesTh.Thu,
+        date: 16,
+        month: "Jul",
+        dayName: "Thu",
+        dayNameTh: dayNamesTh.Thu,
         events: [
           {
             time: "13:00 - 15:00",
-            title: "DST English Gr.A",
-            instructor: "Aj.Zeenat (2Hr)",
-            room: "310",
-          },
-          {
-            time: "13:00 - 15:00",
             title: "DST English Gr.B",
             instructor: "Aj.Prima (2Hr)",
             room: "311",
@@ -386,15 +452,25 @@ export const prepSchedule: PrepScheduleWeek[] = [
             instructor: "Aj.Om (2Hr)",
             room: "312",
           },
+          {
+            time: "13:00 - 15:00",
+            title: "DST English Gr.D",
+            instructor: "Aj.Zeenat (2Hr)",
+            room: "210",
+          },
         ],
       },
       {
-        date: 17, month: "Jul", dayName: "Fri", dayNameTh: dayNamesTh.Fri,
+        date: 17,
+        month: "Jul",
+        dayName: "Fri",
+        dayNameTh: dayNamesTh.Fri,
         events: [
           {
             time: "9:00 - 17:00",
-            title: "Training Program for Fire Prevention and Control",
+            title: "Training program for Fire Prevention and control",
             note: 'For "DST ID69" students at ICT Faculty Building',
+            variant: "info",
           },
         ],
       },
@@ -408,12 +484,27 @@ export const prepSchedule: PrepScheduleWeek[] = [
     days: [
       { date: 19, month: "Jul", dayName: "Sun", dayNameTh: dayNamesTh.Sun, events: [] },
       {
-        date: 20, month: "Jul", dayName: "Mon", dayNameTh: dayNamesTh.Mon,
+        date: 20,
+        month: "Jul",
+        dayName: "Mon",
+        dayNameTh: dayNamesTh.Mon,
         events: [
+          {
+            time: "9:00 - 11:00",
+            title: "DST English Gr.A",
+            instructor: "Aj.Rachan (2Hr)",
+            room: "310",
+          },
+          {
+            time: "9:00 - 11:00",
+            title: "DST English Gr.D",
+            instructor: "Aj.Zeenat (2Hr)",
+            room: "210",
+          },
           {
             time: "13:00 - 15:00",
             title: "DST English Gr.A",
-            instructor: "Aj.Zeenat (2Hr)",
+            instructor: "Aj.Rachan (2Hr)",
             room: "310",
           },
           {
@@ -428,52 +519,90 @@ export const prepSchedule: PrepScheduleWeek[] = [
             instructor: "Aj.Om (2Hr)",
             room: "312",
           },
-        ],
-      },
-      {
-        date: 21, month: "Jul", dayName: "Tue", dayNameTh: dayNamesTh.Tue,
-        events: [
           {
-            time: "17:00 - 18:00",
-            title: "'Rub Nong Khao Baan Activity",
-            note: "(*Optional)",
+            time: "13:00 - 15:00",
+            title: "DST English Gr.D",
+            instructor: "Aj.Zeenat (2Hr)",
+            room: "210",
           },
         ],
       },
       {
-        date: 22, month: "Jul", dayName: "Wed", dayNameTh: dayNamesTh.Wed,
+        date: 21,
+        month: "Jul",
+        dayName: "Tue",
+        dayNameTh: dayNamesTh.Tue,
+        events: [
+          {
+            time: "9:00 - 11:00",
+            title: "DST English Gr.A",
+            instructor: "Aj.Rachan (2Hr)",
+            room: "310",
+          },
+          {
+            time: "13:00 - 15:00",
+            title: "DST English Gr.A",
+            instructor: "Aj.Rachan (2Hr)",
+            room: "310",
+          },
+          {
+            time: "17:00 - 18:00",
+            title: "Rub Nong Khao Baan Activity",
+            note: "(*Optional)",
+            variant: "info",
+          },
+        ],
+      },
+      {
+        date: 22,
+        month: "Jul",
+        dayName: "Wed",
+        dayNameTh: dayNamesTh.Wed,
         events: [
           {
             time: "9:00 - 12:00",
-            title: "'DST - Ethics: Information Session",
-            room: "103, 104, 105",
+            title: "DST - Ethics: Information Session",
+            room: "103,104,105",
           },
         ],
       },
       {
-        date: 23, month: "Jul", dayName: "Thu", dayNameTh: dayNamesTh.Thu,
+        date: 23,
+        month: "Jul",
+        dayName: "Thu",
+        dayNameTh: dayNamesTh.Thu,
         events: [
           {
             time: "",
-            title: "'ICT & DST New Undergraduate Student Orientation",
-          },
-        ],
-      },
-      {
-        date: 24, month: "Jul", dayName: "Fri", dayNameTh: dayNamesTh.Fri, events: [
-          {
-            time: "",
-            title: 'Freshman Welcome Activity "Rak Nong" (*Optional)',
+            title: "ICT & DST New Undergraduate Student Orientation",
             variant: "info",
           },
-        ]
+        ],
       },
       {
-        date: 25, month: "Jul", dayName: "Sat", dayNameTh: dayNamesTh.Sat,
+        date: 24,
+        month: "Jul",
+        dayName: "Fri",
+        dayNameTh: dayNamesTh.Fri,
         events: [
           {
             time: "",
-            title: 'Freshman Welcome Activity "Rak Nong" (*Optional)',
+            title: 'Freshman Welcome Activity "Rak Nong"',
+            note: "(*Optional)",
+            variant: "info",
+          },
+        ],
+      },
+      {
+        date: 25,
+        month: "Jul",
+        dayName: "Sat",
+        dayNameTh: dayNamesTh.Sat,
+        events: [
+          {
+            time: "",
+            title: 'Freshman Welcome Activity "Rak Nong"',
+            note: "(*Optional)",
             variant: "info",
           },
         ],
@@ -486,36 +615,52 @@ export const prepSchedule: PrepScheduleWeek[] = [
     dateRangeTh: "26 ก.ค. – 1 ส.ค.",
     days: [
       {
-        date: 26, month: "Jul", dayName: "Sun", dayNameTh: dayNamesTh.Sun,
+        date: 26,
+        month: "Jul",
+        dayName: "Sun",
+        dayNameTh: dayNamesTh.Sun,
         events: [
           {
             time: "",
-            title: 'Freshman Welcome Activity "Rak Nong" (*Optional)',
+            title: 'Freshman Welcome Activity "Rak Nong"',
+            note: "(*Optional)",
             variant: "info",
           },
         ],
       },
       { date: 27, month: "Jul", dayName: "Mon", dayNameTh: dayNamesTh.Mon, events: [] },
       {
-        date: 28, month: "Jul", dayName: "Tue", dayNameTh: dayNamesTh.Tue,
-        events: [],
+        date: 28,
+        month: "Jul",
+        dayName: "Tue",
+        dayNameTh: dayNamesTh.Tue,
         isHoliday: true,
         holidayName: "H.M. King Maha Vajiralongkorn Phra Vajiraklaochaoyuhua's Birthday",
-      },
-      {
-        date: 29, month: "Jul", dayName: "Wed", dayNameTh: dayNamesTh.Wed,
         events: [],
-        isHoliday: true,
-        holidayName: "'Asalha Bucha Day",
       },
       {
-        date: 30, month: "Jul", dayName: "Thu", dayNameTh: dayNamesTh.Thu,
+        date: 29,
+        month: "Jul",
+        dayName: "Wed",
+        dayNameTh: dayNamesTh.Wed,
+        isHoliday: true,
+        holidayName: "Asalha Bucha Day",
         events: [],
-        isHoliday: true,
-        holidayName: "'Buddhist Lent Day",
       },
       {
-        date: 31, month: "Jul", dayName: "Fri", dayNameTh: dayNamesTh.Fri,
+        date: 30,
+        month: "Jul",
+        dayName: "Thu",
+        dayNameTh: dayNamesTh.Thu,
+        isHoliday: true,
+        holidayName: "Buddhist Lent Day",
+        events: [],
+      },
+      {
+        date: 31,
+        month: "Jul",
+        dayName: "Fri",
+        dayNameTh: dayNamesTh.Fri,
         events: [
           {
             time: "",
